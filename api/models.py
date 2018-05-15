@@ -18,14 +18,7 @@ class Ballots(models.Model):
 
 
 class CommitteeHistory(models.Model):
-    """
-    looks like I need to handle the id field here too?
-    ProgrammingError at /api/committeehistory/
-
-    column committee_history.id does not exist
-    LINE 1: SELECT "committee_history"."id", "committee_history"."commit...
-    """
-    committee_id = models.IntegerField(blank=True, null=True)
+    committee_id = models.IntegerField(primary_key=True)
     committee_name = models.CharField(max_length=255, blank=True, null=True)
     committee_description = models.CharField(max_length=1024, blank=True, null=True)
     effective = models.DateField(blank=True, null=True)
@@ -60,15 +53,8 @@ class Donor(models.Model):
 
 
 class ElectionActivity(models.Model):
-    """
-    looks like I need to set the primary key maybe?
-    ProgrammingError at /api/electionactivity/
-
-    column election_activity.id does not exist
-    LINE 1: SELECT "election_activity"."id", "election_activity"."electi...
-    """
     election = models.CharField(max_length=64, blank=True, null=True)
-    committee_id = models.IntegerField(blank=True, null=True)
+    committee_id = models.IntegerField(primary_key=True)
     active_date = models.DateField(blank=True, null=True)
     status = models.CharField(max_length=8, blank=True, null=True)
     active_reason = models.CharField(max_length=255, blank=True, null=True)
@@ -120,12 +106,6 @@ class StatementOfOrg(models.Model):
 
 
 class TransactionDetails(models.Model):
-    """
-    need to fix this error:
-    InvalidOperation at /api/transactions/
-
-    [<class 'decimal.InvalidOperation'>]
-    """
     transaction_id = models.IntegerField(primary_key=True)
     payee_id = models.IntegerField(blank=True, null=True)
     donor_id = models.IntegerField(blank=True, null=True)
@@ -157,12 +137,6 @@ class TransactionDetails(models.Model):
 
 
 class Transactions(models.Model):
-    """
-    need to fix this error:
-    InvalidOperation at /api/transactions/
-
-    [<class 'decimal.InvalidOperation'>]
-    """
     transaction_id = models.IntegerField(primary_key=True)
     committee_id = models.IntegerField(blank=True, null=True)
     transaction_date = models.DateField(blank=True, null=True)
@@ -171,6 +145,17 @@ class Transactions(models.Model):
     contributor_payee = models.CharField(max_length=255, blank=True, null=True)
     transaction_subtype = models.CharField(max_length=255, blank=True, null=True)
     amount = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+
+    @property
+    def amount(self):
+        """
+        since I can't guess and provide a sensible default value for
+        for the case when `amount` is 'NaN', I am going to remove it
+        from the instance
+        """
+        if self.amount == "NaN":
+            del self.amount
+        return self.amount
 
     class Meta:
         managed = False
