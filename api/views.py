@@ -7,7 +7,7 @@ from api.models import (Transactions,
                         CommitteesList,
                         CommitteeHistory,
                         Ballots,)
-from api.serializers import (TransactionSerializer, 
+from api.serializers import (TransactionsSerializer, 
                             TransactionDetailSerializer,
                             StatementOfOrgSerializer, 
                             PayeeSerializer,
@@ -15,7 +15,7 @@ from api.serializers import (TransactionSerializer,
                             DonorSerializer,
                             CommitteesListSerializer, 
                             CommitteeHistorySerializer,
-                            BallotSerializer,)
+                            BallotsSerializer,)
 
 from rest_framework.decorators import api_view, detail_route
 from rest_framework import generics
@@ -26,3 +26,39 @@ from rest_framework import renderers
 from rest_framework import viewsets
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend, FilterSet
+
+class TransactionsViewSet(viewsets.ModelViewSet):
+    serializer_class = TransactionsSerializer
+    queryset = Transactions.objects.all()
+
+class TransactionDetailViewSet(viewsets.ModelViewSet):
+    serializer_class = TransactionsSerializer
+    queryset = TransactionDetails.objects.all()
+
+class StatementOfOrgViewSet(viewsets.ModelViewSet):
+    serializer_class = StatementOfOrgSerializer
+    queryset = StatementOfOrg.objects.all()
+
+class PayeeViewSet(viewsets.ModelViewSet):
+    serializer_class = PayeeSerializer
+    queryset = Payee.objects.all()
+
+class ElectionActivityViewSet(viewsets.ModelViewSet):
+    serializer_class = ElectionActivitySerializer
+    queryset = ElectionActivity.objects.all()
+
+class DonorViewSet(viewsets.ModelViewSet):
+    serializer_class = DonorSerializer
+    queryset = Donor.objects.all()
+
+class CommitteesListViewSet(viewsets.ModelViewSet):
+    serializer_class = CommitteesListSerializer
+    queryset = CommitteesList.objects.all()
+
+class CommitteeHistoryViewSet(viewsets.ModelViewSet):
+    serializer_class = CommitteeHistorySerializer
+    queryset = CommitteeHistory.objects.all()
+
+class BallotsViewSet(viewsets.ModelViewSet):
+    serializer_class = BallotsSerializer
+    queryset = Ballots.objects.all()

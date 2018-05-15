@@ -6,12 +6,16 @@ from rest_framework_swagger.views import get_swagger_view
 
 
 router = DefaultRouter()
-#router.register(r'crashes', views.CrashViewSet)
-#router.register(r'participants', views.ParticViewSet)
-#router.register(r'vehicles', views.VhclViewSet)
+router.register(r'transactions', views.TransactionsViewSet)
+router.register(r'transactiondetail', views.TransactionDetailViewSet)
+router.register(r'statementoforg', views.StatementOfOrgViewSet)
+router.register(r'payee', views.PayeeViewSet)
+router.register(r'electionactivity', views.ElectionActivityViewSet)
+router.register(r'donor', views.DonorViewSet)
+router.register(r'committeeslist', views.CommitteesListViewSet)
+router.register(r'committeehistory', views.CommitteeHistoryViewSet)
+router.register(r'ballots', views.BallotsViewSet)
 
-#schema view
-#schema_view = get_schema_view(title='ODOT Crash API')
 schema_view = get_swagger_view(title="elections API")
 
 urlpatterns = [

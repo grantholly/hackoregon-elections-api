@@ -3,7 +3,7 @@ from api.models import (Transactions, TransactionDetails, StatementOfOrg,
                        Payee, ElectionActivity, Donor, CommitteesList,
                        CommitteeHistory, Ballots)
 
-class TransactionSerializer(serializers.ModelSerializer):
+class TransactionsSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Transactions
@@ -51,7 +51,7 @@ class CommitteeHistorySerializer(serializers.ModelSerializer):
         model = CommitteeHistory
         fields = '__all__'
 
-class BallotSerializer(serializers.ModelSerializer):
+class BallotsSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Ballots
