@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from api.models import Transaction, TransactionDetails, StatementOfOrg,
+from api.models import (Transactions, TransactionDetails, StatementOfOrg,
                        Payee, ElectionActivity, Donor, CommitteesList,
-                       CommitteeHistory, Ballots
+                       CommitteeHistory, Ballots)
 
 class TransactionSerializer(serializers.ModelSerializer):
     
