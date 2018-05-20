@@ -9,21 +9,26 @@ class TransactionsSerializer(serializers.ModelSerializer):
         model = Transactions
 #        fields = '__all__'
         fields = (
-            "transaction_id",
-            "committee_id",
-            "transaction_date",
-            "status",
-            "filer_committee",
-            "contributor_payee",
-            "transaction_subtype",
-            "total_amount",
+            "transaction_id", "committee_id", "transaction_date",
+            "status", "filer_committee", "contributor_payee",
+            "transaction_subtype", "total_amount",
         )
 
 class TransactionDetailSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = TransactionDetails
-        fields = '__all__'
+#        fields = '__all__'
+        fields = (
+            "transaction_id", "payee_id", "donor_id",
+            "address", "address_book_type", "agent",
+            "total_aggregate", "total_amount", "associations",
+            "description", "due_date", "employer_name",
+            "filed_date", "name", "occupation", "occupation_letter_date",
+            "payer_of_personal_expenditure", "payment_method",
+            "process_status", "purpose", "repayment_schedule",
+            "transaction_date", "transaction_sub_type", "transaction_type",
+        )
 
 class StatementOfOrgSerializer(serializers.ModelSerializer):
     

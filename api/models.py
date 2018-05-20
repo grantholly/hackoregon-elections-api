@@ -133,6 +133,18 @@ class TransactionDetails(models.Model):
     transaction_sub_type = models.CharField(max_length=255, blank=True, null=True)
     transaction_type = models.CharField(max_length=32, blank=True, null=True)
 
+    @property
+    def total_amount(self):
+        if self.amount.is_nan():
+            return Decimal(0.0)
+        return self.amount        
+
+    @property
+    def total_aggregate(self):
+        if self.aggregate.is_nan():
+            return Decimal(0.0)
+        return self.aggregate
+
     class Meta:
         managed = False
         db_table = 'transaction_details'
