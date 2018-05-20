@@ -7,7 +7,17 @@ class TransactionsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Transactions
-        fields = '__all__'
+#        fields = '__all__'
+        fields = (
+            "transaction_id",
+            "committee_id",
+            "transaction_date",
+            "status",
+            "filer_committee",
+            "contributor_payee",
+            "transaction_subtype",
+            "total_amount",
+        )
 
 class TransactionDetailSerializer(serializers.ModelSerializer):
     
