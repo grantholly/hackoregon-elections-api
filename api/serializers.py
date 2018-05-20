@@ -4,7 +4,7 @@ from api.models import (Transactions, TransactionDetails, StatementOfOrg,
                        CommitteeHistory, Ballots)
 
 class TransactionsSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = Transactions
         fields = '__all__'

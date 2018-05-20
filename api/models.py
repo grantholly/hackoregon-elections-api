@@ -146,17 +146,6 @@ class Transactions(models.Model):
     transaction_subtype = models.CharField(max_length=255, blank=True, null=True)
     amount = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
 
-    @property
-    def amount(self):
-        """
-        since I can't guess and provide a sensible default value for
-        for the case when `amount` is 'NaN', I am going to remove it
-        from the instance
-        """
-        if self.amount == "NaN":
-            del self.amount
-        return self.amount
-
     class Meta:
         managed = False
         db_table = 'transactions'
