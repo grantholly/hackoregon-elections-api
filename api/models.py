@@ -114,8 +114,8 @@ class TransactionDetails(models.Model):
     address = models.CharField(max_length=255, blank=True, null=True)
     address_book_type = models.CharField(max_length=32, blank=True, null=True)
     agent = models.CharField(max_length=64, blank=True, null=True)
-    aggregate = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
-    amount = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    aggregate = models.DecimalField(max_digits=15, decimal_places=2, blank=True, null=True)
+    amount = models.DecimalField(max_digits=15, decimal_places=2, blank=True, null=True)
     associations = models.CharField(max_length=2048, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     due_date = models.DateTimeField(blank=True, null=True)
@@ -158,7 +158,7 @@ class Transactions(models.Model):
     filer_committee = models.CharField(max_length=255, blank=True, null=True)
     contributor_payee = models.CharField(max_length=255, blank=True, null=True)
     transaction_subtype = models.CharField(max_length=255, blank=True, null=True)
-    amount = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    amount = models.DecimalField(max_digits=15, decimal_places=2, blank=True, null=True)
     
     @property
     def total_amount(self):
