@@ -32,7 +32,7 @@ class TransactionsViewSet(viewsets.ModelViewSet):
     queryset = Transactions.objects.all()
 
 class TransactionDetailViewSet(viewsets.ModelViewSet):
-    serializer_class = TransactionsSerializer
+    serializer_class = TransactionDetailSerializer
     queryset = TransactionDetails.objects.all()
 
 class StatementOfOrgViewSet(viewsets.ModelViewSet):
