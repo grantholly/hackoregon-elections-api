@@ -29,7 +29,10 @@ from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 
 class TransactionsViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionsSerializer
+    filter_backends = (SearchFilter,)
     queryset = Transactions.objects.all()
+    search_fields = ("transaction_subtype", "contributor_payee",
+                     "filer_committee", "status",)
 
 class TransactionDetailViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionsSerializer
