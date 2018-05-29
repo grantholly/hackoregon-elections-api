@@ -36,7 +36,7 @@ class TransactionsViewSet(viewsets.ModelViewSet):
                      "filer_committee", "status",)
 
 class TransactionDetailViewSet(viewsets.ModelViewSet):
-    serializer_class = TransactionsSerializer
+    serializer_class = TransactionDetailSerializer
     queryset = TransactionDetails.objects.all()
     filter_backends = (SearchFilter,)
     ordering_fields = '__all__'
