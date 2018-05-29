@@ -29,56 +29,70 @@ from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 
 class TransactionsViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionsSerializer
-    filter_backends = (SearchFilter,)
+    queryset = Transactions.objects.all()    
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter)
     ordering_fields = '__all__'
-    queryset = Transactions.objects.all()
-    search_fields = ("transaction_subtype", "contributor_payee",
-                     "filer_committee", "status",)
+    search_fields = '__all__'
+    filtering_fields = '__all__'
 
 class TransactionDetailViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionDetailSerializer
     queryset = TransactionDetails.objects.all()
-    filter_backends = (SearchFilter,)
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter)
     ordering_fields = '__all__'
-    
+    search_fields = '__all__'    
 class StatementOfOrgViewSet(viewsets.ModelViewSet):
     serializer_class = StatementOfOrgSerializer
     queryset = StatementOfOrg.objects.all()
-    filter_backends = (SearchFilter,)   
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter)   
     ordering_fields = '__all__'
+    search_fields = '__all__'
+    filtering_fields = '__all__'
     
 class PayeeViewSet(viewsets.ModelViewSet):
     serializer_class = PayeeSerializer
     queryset = Payee.objects.all()
-    filter_backends = (SearchFilter,)    
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter)    
     ordering_fields = '__all__'
+    search_fields = '__all__'    
+    filtering_fields = '__all__'
     
 class ElectionActivityViewSet(viewsets.ModelViewSet):
     serializer_class = ElectionActivitySerializer
     queryset = ElectionActivity.objects.all()
-    filter_backends = (SearchFilter,)
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter)
     ordering_fields = '__all__'
+    search_fields = '__all__'
+    filtering_fields = '__all__'
     
 class DonorViewSet(viewsets.ModelViewSet):
     serializer_class = DonorSerializer
     queryset = Donor.objects.all()
-    filter_backends = (SearchFilter,) 
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter) 
     ordering_fields = '__all__'
+    search_fields = '__all__' 
+    filtering_fields = '__all__'
     
 class CommitteesListViewSet(viewsets.ModelViewSet):
     serializer_class = CommitteesListSerializer
     queryset = CommitteesList.objects.all()
-    filter_backends = (SearchFilter,)
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter)
     ordering_fields = '__all__'
+    search_fields = '__all__'
+    filtering_fields = '__all__'
     
 class CommitteeHistoryViewSet(viewsets.ModelViewSet):
     serializer_class = CommitteeHistorySerializer
     queryset = CommitteeHistory.objects.all()
-    filter_backends = (SearchFilter,)
-    ordering_fields = '__all__'
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter)
+    ordering_fields = '__all__' 
+    search_fields = '__all__'
+    filtering_fields = '__all__'
     
 class BallotsViewSet(viewsets.ModelViewSet):
     serializer_class = BallotsSerializer
     queryset = Ballots.objects.all()
-    filter_backends = (SearchFilter,)
+    filter_backends = (SearchFilter, DjangoFilterBackend, OrderingFilter)
     ordering_fields = '__all__'
+    search_fields = '__all__'
+    filtering_fields = '__all__'
